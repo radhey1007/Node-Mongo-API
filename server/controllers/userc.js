@@ -87,6 +87,23 @@ this.updatedata=(req,res)=>{
           });
     })
 }
+
+this.deleteUserData=(req,res)=>{
+    const id = req.params.id;
+    return User.findByIdAndRemove(id).exec().then((resd)=>{
+        return res.status(201).json({
+            success: true,
+            message: 'User Deleted  successfully',
+            User: resd,
+          });
+    }).catch((err)=>{
+        res.status(500).json({
+            success: false,
+            message: 'Server error. Please try again.',
+            error: err.message,
+          });
+    })
+}
 }
 
 module.exports = new createUser();

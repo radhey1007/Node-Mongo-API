@@ -20,5 +20,8 @@ module.exports = {
         app.patch('/api/updatedata/:id', function (req, res) {
             createUser.updatedata(req, res);
         });
+        app.delete('/api/deleteUserData/:id', function (req, res) {
+            createUser.deleteUserData(req, res);
+        });
     }
 }
