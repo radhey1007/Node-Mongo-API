@@ -1,0 +1,22 @@
+{
+  "name": "mongoapi",
+  "version": "0.0.1",
+  "description": "mongo nosql db developement ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ankit199/mongoapi.git"
+  },
+  "author": "VillagerBy",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Ankit199/mongoapi/issues"
+  },
+  "homepage": "https://github.com/Ankit199/mongoapi#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
