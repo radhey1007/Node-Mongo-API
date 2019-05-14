@@ -17,11 +17,14 @@ mongoose.connect('mongodb://ankit1992:sba18430ankit@ds125362.mlab.com:25362/ngcr
   .catch((error)=> {
     console.log('Error connecting to database');
   });
-  routes.configure(app); 
+  routes.configure(app);
+  //app.use('/api/', router);
+// set up port
 const port = 5035;
+// set up route
 app.get('/', (req, res) => {
   res.status(200).json({
-    message: 'Welcome to Project Support',
+    message: 'Welcome to Mongo Project Management ',
   });
 });
 

@@ -1,4 +1,6 @@
 var createUser = require('../controllers/userc');
+var createPosition = require('../controllers/positionc')
+
 module.exports = {
     //set up route configuration that will be handle by express server   
     configure: function (app) {
@@ -16,6 +18,9 @@ module.exports = {
         });
         app.delete('/api/deleteUserData/:id', function (req, res) {
             createUser.deleteUserData(req, res);
+        });
+        app.post('/api/registerposition', function (req, res) {          
+            createPosition.postpostion(res,req);
         });
     }
 }
