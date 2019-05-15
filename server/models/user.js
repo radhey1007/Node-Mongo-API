@@ -18,5 +18,13 @@ const user = new mongoose.Schema({
     type: Boolean,
     required: false,
   },
+  positionid:{
+    type: Number,
+    required: true,
+  },
+  departmentid:{
+    type: Number,
+    required: true,
+  }
 });
 export default mongoose.model('User', user);

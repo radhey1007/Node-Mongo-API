@@ -8,9 +8,12 @@ module.exports = {
         /*********** User Detail Controller Begin  ************/
         app.post('/api/register', function (req, res) {
             createUser.registeruser(req, res);
-        });
+        });  
         app.get('/api/getuser', function (req, res) {
             createUser.getAlluser(req, res);
+        });
+        app.get('/api/fetchinfo', function (req, res) {
+            createUser.fetchinfo(req, res);
         });
         app.get('/api/getUserByID/:id', function (req, res) {
             createUser.getUserByID(req, res);

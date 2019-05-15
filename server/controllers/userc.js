@@ -12,7 +12,9 @@ this.registeruser=(req,res)=>{
         name: req.body.name,
         address: req.body.address,
         password:randomstring,
-        isActive:true
+        isActive:true,
+        positionid:req.body.positionid,
+        departmentid:req.body.departmentid
       });
       return user
         .save()
@@ -127,6 +129,34 @@ this.multipledeleteuserData=(req,res)=>{
         });
   })
 }
+/** Using Aggregrate Lookup method for join multiple collection information */
+
+this.fetchinfo=(req,res)=>{
+ return  User.aggregate().
+  lookup({
+    from: 'positions',
+    localField: 'positionid',
+    foreignField: 'pkid',
+    as: 'Position'
+  })
+  .project({
+    _id: 1,  name : 1 , address : 1 ,isActive:1,position:"$Position.name"
+  })
+  .exec()
+  .then((resd)=>{
+    return res.status(201).json({
+        success: true,
+        message: `Data Fetched successfully`,
+        User: resd,
+      });
+}).catch((err)=>{
+    res.status(500).json({
+        success: false,
+        message: 'Server error. Please try again.',
+        error: err.message,
+      });
+})
+} 
 }
   
 module.exports = new createUser();
