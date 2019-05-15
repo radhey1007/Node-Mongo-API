@@ -138,9 +138,14 @@ this.fetchinfo=(req,res)=>{
     localField: 'positionid',
     foreignField: 'pkid',
     as: 'Position'
+  }).lookup({
+    from: 'departments',
+    localField: 'departmentid',
+    foreignField: 'dkid',
+    as: 'Department'
   })
   .project({
-    _id: 1,  name : 1 , address : 1 ,isActive:1,position:"$Position.name"
+    _id: 1,  name : 1 , address : 1 ,isActive:1,position:"$Position.name",department:"$Department.name"
   })
   .exec()
   .then((resd)=>{

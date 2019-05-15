@@ -1,6 +1,6 @@
 var createUser = require('../controllers/userc');
 var createPosition = require('../controllers/positionc')
-
+var createDepartment = require('../controllers/departmentc')
 module.exports = {
     //set up route configuration that will be handle by express server   
     configure: function (app) {
@@ -27,7 +27,7 @@ module.exports = {
         app.delete('/api/deleteUserData/:id', function (req, res) {
             createUser.deleteUserData(req, res);
         });
-        /*********** User Table Detail Controller End  ************/
+       
 
          /*********** Position Table Detail Controller Begin  ************/
         app.post('/api/registerposition', function (req, res) {          
@@ -36,6 +36,13 @@ module.exports = {
         app.get('/api/getposition', function (req, res) {
             createPosition.getAllPosition(req, res);
         });
-          /*********** Position Table Detail Controller End  ************/
+          /*********** Department Table Detail Controller Begin  ************/
+
+          app.post('/api/registerdepartment', function (req, res) {          
+            createDepartment.postdepartment(res,req);
+        });
+        app.get('/api/getdepartment', function (req, res) {
+            createDepartment.getAlldepartment(req, res);
+        });
     }
 }
