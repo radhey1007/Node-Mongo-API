@@ -29,6 +29,21 @@ function createPosition(){
         });
     }
 
-    
+    this.getAllPosition=(req,res)=>{
+
+      return Position.find().then((resd)=>{
+           return res.status(201).json({
+               success: true,
+               message: 'Position table fetched successfully',
+               Position: resd,
+             });
+       }).catch((err)=>{
+           res.status(500).json({
+               success: false,
+               message: 'Server error. Please try again.',
+               error: err.message,
+             });
+       })
+   }
 }
 module.exports = new createPosition();

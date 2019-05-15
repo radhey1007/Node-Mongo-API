@@ -34,7 +34,7 @@ this.registeruser=(req,res)=>{
  
 this.getAlluser=(req,res)=>{
 
-   return User.find().select('_id name address isActive password').then((resd)=>{
+   return User.find({isActive:true}).select('_id name address isActive password').then((resd)=>{
         return res.status(201).json({
             success: true,
             message: 'User fetched successfully',
@@ -103,6 +103,29 @@ this.deleteUserData=(req,res)=>{
             error: err.message,
           });
     })
+}
+
+this.multipledeleteuserData=(req,res)=>{
+ 
+  const ids = req.body.id;
+  const updateObject= {"isActive": req.body.isActive};
+  const isActive = req.body.type;
+  console.log(ids); 
+
+  return User.updateMany({ _id:{$in:ids} }, { $set:updateObject })
+  .exec().then((resd)=>{
+      return res.status(201).json({
+          success: true,
+          message: `All User's ${isActive}  successfully`,
+          User: resd,
+        });
+  }).catch((err)=>{
+      res.status(500).json({
+          success: false,
+          message: 'Server error. Please try again.',
+          error: err.message,
+        });
+  })
 }
 }
   

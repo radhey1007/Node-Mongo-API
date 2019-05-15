@@ -4,6 +4,8 @@ var createPosition = require('../controllers/positionc')
 module.exports = {
     //set up route configuration that will be handle by express server   
     configure: function (app) {
+
+        /*********** User Detail Controller Begin  ************/
         app.post('/api/register', function (req, res) {
             createUser.registeruser(req, res);
         });
@@ -16,11 +18,21 @@ module.exports = {
         app.patch('/api/updatedata/:id', function (req, res) {
             createUser.updatedata(req, res);
         });
+        app.patch('/api/multipleuserdelete', function (req, res) {
+            createUser.multipledeleteuserData(req, res);
+        });
         app.delete('/api/deleteUserData/:id', function (req, res) {
             createUser.deleteUserData(req, res);
         });
+        /*********** User Table Detail Controller End  ************/
+
+         /*********** Position Table Detail Controller Begin  ************/
         app.post('/api/registerposition', function (req, res) {          
             createPosition.postpostion(res,req);
         });
+        app.get('/api/getposition', function (req, res) {
+            createPosition.getAllPosition(req, res);
+        });
+          /*********** Position Table Detail Controller End  ************/
     }
 }
