@@ -35,6 +35,24 @@ function createUser() {
       });
   };
 
+this.login=(req,res)=>{
+
+  return User.find({name:req.body.name,password:req.body.password}).select("_id name address isActive password").then(resd => {
+  return res.status(200).json({
+    success: true,
+    message: "User fetched successfully",
+    User: resd
+  });
+})
+.catch(err => {
+  res.status(304).json({
+    success: false,
+    message: "Server error. Please try again.",
+    error: err.message
+  });
+});
+}
+
   this.getAlluser = (req, res) => {
     /** Pagination Implementation */
     var pageNo = parseInt(req.query.pageNo);

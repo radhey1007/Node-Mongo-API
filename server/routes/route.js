@@ -9,6 +9,9 @@ module.exports = {
         app.post('/api/register', function (req, res) {
             createUser.registeruser(req, res);
         });  
+        app.post('/api/login', function (req, res) {
+            createUser.login(req, res);
+        });
         app.get('/api/getuser', function (req, res) {
             createUser.getAlluser(req, res);
         });
@@ -29,16 +32,16 @@ module.exports = {
         });
        
 
-         /*********** Position Table Detail Controller Begin  ************/
+        /*********** Position Table Detail Controller Begin  ************/
         app.post('/api/registerposition', function (req, res) {          
             createPosition.postpostion(res,req);
         });
         app.get('/api/getposition', function (req, res) {
             createPosition.getAllPosition(req, res);
         });
-          /*********** Department Table Detail Controller Begin  ************/
+        /*********** Department Table Detail Controller Begin  ************/
 
-          app.post('/api/registerdepartment', function (req, res) {          
+        app.post('/api/registerdepartment', function (req, res) {          
             createDepartment.postdepartment(res,req);
         });
         app.get('/api/getdepartment', function (req, res) {
