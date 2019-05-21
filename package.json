@@ -4,7 +4,7 @@
   "description": "mongo nosql db developement ",
   "main": "app.js",
   "scripts": {
-    "start:dev": "nodemon app.js --exec babel-node"
+    "start": "nodemon app.js --exec babel-node"
   },
   "repository": {
     "type": "git",
