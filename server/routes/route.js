@@ -4,7 +4,9 @@ var createDepartment = require('../controllers/departmentc')
 module.exports = {
     //set up route configuration that will be handle by express server   
     configure: function (app) {
-
+app.get('/', (req, res) => {
+  res.status(200).json({ message: Welcome to Node.js & Express });
+});
         /*********** User Detail Controller Begin  ************/
         app.post('/api/register', function (req, res) {
             createUser.registeruser(req, res);
