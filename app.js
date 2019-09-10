@@ -21,11 +21,11 @@ mongoose.connect('mongodb://ankit1992:sba18430ankit@ds125362.mlab.com:25362/ngcr
   //app.use('/api/', router);
 // set up port
 
-app.get('/', (req, res) => {
-  res.status(200).json({
-    message: 'Welcome to Mongo Project Management ',
-  });
-});
+//app.get('/', (req, res) => {
+ // res.status(200).json({
+ //   message: 'Welcome to Mongo Project Management ',
+  //});
+//});
 
 app.listen(process.env.PORT || 5035, () => {
   console.log(`Our server is running on port ${port}`);
